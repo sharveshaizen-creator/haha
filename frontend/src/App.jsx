@@ -11,7 +11,7 @@ export default function App() {
 
   const fetchPrescriptions = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/prescriptions');
+      const res = await fetch('/api/prescriptions');
       const data = await res.json();
       setPrescriptions(data);
     } catch (err) {
@@ -27,7 +27,7 @@ export default function App() {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:5000/api/prescriptions', {
+      const res = await fetch('/api/prescriptions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

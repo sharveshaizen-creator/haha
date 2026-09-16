@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -41,6 +42,19 @@ app.post('/api/prescriptions', (request, response) => {
   response.status(201).json({ message: "Prescription created successfully", data: newRecord });
 });
 
+// Serve static frontend build if present
+const frontendDist = path.join(__dirname, 'frontend', 'dist');
+const rootDist = path.join(__dirname, 'dist');
+const distPath = require('fs').existsSync(frontendDist) ? frontendDist : rootDist;
+
+app.use(express.static(distPath));
+
+app.get('*', (req, res) => {
+  if (!req.path.startsWith('/api')) {
+    res.sendFile(path.join(distPath, 'index.html'));
+  }
+});
+
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
