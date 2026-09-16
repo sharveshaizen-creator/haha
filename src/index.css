@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+}
+
+.prescription-form {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.prescription-form h2 {
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.prescription-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d8dfe8;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.prescription-form button {
+  padding: 12px 16px;
+  background: #2d6cdf;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.prescription-form button:hover {
+  background: #2559b7;
+}
